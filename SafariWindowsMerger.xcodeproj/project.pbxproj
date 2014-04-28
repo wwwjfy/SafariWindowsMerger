@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA4A9D29190E7F48004BAF97 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA4A9D28190E7F48004BAF97 /* CoreFoundation.framework */; };
+		EA4A9D2F190E7F48004BAF97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA4A9D2D190E7F48004BAF97 /* InfoPlist.strings */; };
+		EA4A9D38190E7FB7004BAF97 /* SafariWindowsMerger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4A9D37190E7FB7004BAF97 /* SafariWindowsMerger.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EA4A9D25190E7F48004BAF97 /* SafariWindowsMerger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafariWindowsMerger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA4A9D28190E7F48004BAF97 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		EA4A9D2C190E7F48004BAF97 /* SafariWindowsMerger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafariWindowsMerger-Info.plist"; sourceTree = "<group>"; };
+		EA4A9D2E190E7F48004BAF97 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA4A9D30190E7F48004BAF97 /* SafariWindowsMerger-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafariWindowsMerger-Prefix.pch"; sourceTree = "<group>"; };
+		EA4A9D36190E7FB7004BAF97 /* SafariWindowsMerger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafariWindowsMerger.h; sourceTree = "<group>"; };
+		EA4A9D37190E7FB7004BAF97 /* SafariWindowsMerger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafariWindowsMerger.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA4A9D22190E7F48004BAF97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA4A9D29190E7F48004BAF97 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA4A9D1C190E7F48004BAF97 = {
+			isa = PBXGroup;
+			children = (
+				EA4A9D2A190E7F48004BAF97 /* SafariWindowsMerger */,
+				EA4A9D27190E7F48004BAF97 /* Frameworks */,
+				EA4A9D26190E7F48004BAF97 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA4A9D26190E7F48004BAF97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA4A9D25190E7F48004BAF97 /* SafariWindowsMerger.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA4A9D27190E7F48004BAF97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA4A9D28190E7F48004BAF97 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA4A9D2A190E7F48004BAF97 /* SafariWindowsMerger */ = {
+			isa = PBXGroup;
+			children = (
+				EA4A9D2B190E7F48004BAF97 /* Supporting Files */,
+				EA4A9D36190E7FB7004BAF97 /* SafariWindowsMerger.h */,
+				EA4A9D37190E7FB7004BAF97 /* SafariWindowsMerger.m */,
+			);
+			path = SafariWindowsMerger;
+			sourceTree = "<group>";
+		};
+		EA4A9D2B190E7F48004BAF97 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA4A9D2C190E7F48004BAF97 /* SafariWindowsMerger-Info.plist */,
+				EA4A9D2D190E7F48004BAF97 /* InfoPlist.strings */,
+				EA4A9D30190E7F48004BAF97 /* SafariWindowsMerger-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA4A9D24190E7F48004BAF97 /* SafariWindowsMerger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA4A9D33190E7F48004BAF97 /* Build configuration list for PBXNativeTarget "SafariWindowsMerger" */;
+			buildPhases = (
+				EA4A9D21190E7F48004BAF97 /* Sources */,
+				EA4A9D22190E7F48004BAF97 /* Frameworks */,
+				EA4A9D23190E7F48004BAF97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SafariWindowsMerger;
+			productName = SafariWindowsMerger;
+			productReference = EA4A9D25190E7F48004BAF97 /* SafariWindowsMerger.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA4A9D1D190E7F48004BAF97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Tony Wang";
+			};
+			buildConfigurationList = EA4A9D20190E7F48004BAF97 /* Build configuration list for PBXProject "SafariWindowsMerger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EA4A9D1C190E7F48004BAF97;
+			productRefGroup = EA4A9D26190E7F48004BAF97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA4A9D24190E7F48004BAF97 /* SafariWindowsMerger */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA4A9D23190E7F48004BAF97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA4A9D2F190E7F48004BAF97 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA4A9D21190E7F48004BAF97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA4A9D38190E7FB7004BAF97 /* SafariWindowsMerger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EA4A9D2D190E7F48004BAF97 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA4A9D2E190E7F48004BAF97 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA4A9D31190E7F48004BAF97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EA4A9D32190E7F48004BAF97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EA4A9D34190E7F48004BAF97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SafariWindowsMerger/SafariWindowsMerger-Prefix.pch";
+				INFOPLIST_FILE = "SafariWindowsMerger/SafariWindowsMerger-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		EA4A9D35190E7F48004BAF97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SafariWindowsMerger/SafariWindowsMerger-Prefix.pch";
+				INFOPLIST_FILE = "SafariWindowsMerger/SafariWindowsMerger-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA4A9D20190E7F48004BAF97 /* Build configuration list for PBXProject "SafariWindowsMerger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA4A9D31190E7F48004BAF97 /* Debug */,
+				EA4A9D32190E7F48004BAF97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA4A9D33190E7F48004BAF97 /* Build configuration list for PBXNativeTarget "SafariWindowsMerger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA4A9D34190E7F48004BAF97 /* Debug */,
+				EA4A9D35190E7F48004BAF97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA4A9D1D190E7F48004BAF97 /* Project object */;
+}
