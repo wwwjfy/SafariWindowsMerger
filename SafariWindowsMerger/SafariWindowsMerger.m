@@ -36,7 +36,8 @@ void moveSrcToNewWindowAfterSelected(id srcWin) {
     id destWin = [[NSApp orderedWindows][0] windowController];
     for (id item in toMoveItems) {
       objc_msgSend(destWin, @selector(moveTabFromOtherWindow:toIndex:andSelect:),
-                   item, 1, NO);
+                   item, destIndex, NO);
+      destIndex++;
     }
   }
 }
