@@ -48,7 +48,8 @@ void moveSrcToNewWindowAfterSelected(id srcWin) {
   NSLog(@"SafariWindowsMerger installed");
   [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyUpMask
                                         handler:^NSEvent *(NSEvent *theEvent) {
-                                          if ([theEvent modifierFlags] & (NSControlKeyMask | NSShiftKeyMask)) {
+                                          if (([theEvent modifierFlags] & NSControlKeyMask) &&
+                                              ([theEvent modifierFlags] & NSShiftKeyMask)) {
                                             switch ([theEvent keyCode]) {
                                               case 46: // 'M'
                                               {
