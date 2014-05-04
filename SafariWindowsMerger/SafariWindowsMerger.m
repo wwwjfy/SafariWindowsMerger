@@ -9,8 +9,16 @@
 #import "SafariWindowsMerger.h"
 #import <objc/message.h>
 
+BOOL isWindowNotAvailable(id win) {
+  if ([[win window] isMiniaturized]) {
+    return YES;
+  } else {
+    return NO;
+  }
+}
+
 void moveSrcToDest(id srcWin, id destWin) {
-  if ([[srcWin window] isMiniaturized] || [[destWin window] isMiniaturized]) {
+  if (isWindowNotAvailable(srcWin) || isWindowNotAvailable(destWin)) {
     return;
   }
   id tabViewItem = objc_msgSend(srcWin, @selector(selectedTab));
@@ -23,13 +31,13 @@ void moveSrcToDest(id srcWin, id destWin) {
 }
 
 void moveSrcToNewWindowAfterSelected(id srcWin) {
-  if ([[srcWin window] isMiniaturized]) {
+  if (isWindowNotAvailable(srcWin)) {
     return;
   }
   NSUInteger selectedIndex = (NSUInteger)objc_msgSend(srcWin, @selector(selectedTabIndex));
   id tabViewItem = objc_msgSend(srcWin, @selector(selectedTab));
   objc_msgSend(srcWin, @selector(_moveTabToNewWindow:), tabViewItem);
-  id tabViewItems = [[objc_msgSend(srcWin, @selector(selectedTab)) tabView] tabViewItems];
+  id tabViewItems = [[tabViewItem tabView] tabViewItems];
   id toMoveItems = [tabViewItems subarrayWithRange:NSMakeRange(selectedIndex, [tabViewItems count] - selectedIndex)];
   if ([toMoveItems count] > 0) {
     NSUInteger destIndex = 1;
@@ -40,6 +48,37 @@ void moveSrcToNewWindowAfterSelected(id srcWin) {
       destIndex++;
     }
   }
+}
+
+// The index count is a bit tricky: the toIndex should be when the current tab has not been moved.
+void moveTabLeftward(id win) {
+  if (isWindowNotAvailable(win)) {
+    return;
+  }
+  id tabViewItem = objc_msgSend(win, @selector(selectedTab));
+  NSUInteger selectedIndex = (NSUInteger)objc_msgSend(win, @selector(selectedTabIndex));
+  if (selectedIndex == 0) {
+    id tabViewItems = [[tabViewItem tabView] tabViewItems];
+    selectedIndex = [tabViewItems count];
+  } else {
+    selectedIndex--;
+  }
+  objc_msgSend(win, @selector(moveTab:toIndex:), tabViewItem, selectedIndex);
+}
+
+void moveTabRightward(id win) {
+  if (isWindowNotAvailable(win)) {
+    return;
+  }
+  id tabViewItem = objc_msgSend(win, @selector(selectedTab));
+  NSUInteger selectedIndex = (NSUInteger)objc_msgSend(win, @selector(selectedTabIndex));
+  id tabViewItems = [[tabViewItem tabView] tabViewItems];
+  if (selectedIndex == ([tabViewItems count] - 1)) {
+    selectedIndex = 0;
+  } else {
+    selectedIndex += 2;
+  }
+  objc_msgSend(win, @selector(moveTab:toIndex:), tabViewItem, selectedIndex);
 }
 
 @implementation SafariWindowsMerger
@@ -64,6 +103,22 @@ void moveSrcToNewWindowAfterSelected(id srcWin) {
                                                 id srcWin = [[NSApp orderedWindows][0] windowController];
                                                 moveSrcToNewWindowAfterSelected(srcWin);
                                               }
+                                                break;
+
+                                              default:
+                                                break;
+                                            }
+                                          } else if (([theEvent modifierFlags] & NSShiftKeyMask) &&
+                                                     ([theEvent modifierFlags] & NSAlternateKeyMask) &&
+                                                     ([theEvent modifierFlags] & NSCommandKeyMask)) {
+                                            id win = [[NSApp orderedWindows][0] windowController];
+                                            switch ([theEvent keyCode]) {
+                                              case 33: // '['
+                                                moveTabLeftward(win);
+                                                break;
+
+                                              case 30: // ']'
+                                                moveTabRightward(win);
                                                 break;
 
                                               default:
