@@ -81,6 +81,14 @@ void moveTabRightward(id win) {
   objc_msgSend(win, @selector(moveTab:toIndex:), tabViewItem, selectedIndex);
 }
 
+void goToLastTab(id win) {
+  if (isWindowNotAvailable(win)) {
+    return;
+  }
+  NSUInteger lastIndex = [[[objc_msgSend(win, @selector(selectedTab)) tabView] tabViewItems] count] - 1;
+  objc_msgSend(win, @selector(_selectTabAtIndex:), lastIndex);
+}
+
 @implementation SafariWindowsMerger
 
 + (void)load {
@@ -119,6 +127,16 @@ void moveTabRightward(id win) {
 
                                               case 30: // ']'
                                                 moveTabRightward(win);
+                                                break;
+
+                                              default:
+                                                break;
+                                            }
+                                          } else if (([theEvent modifierFlags] & NSCommandKeyMask)) {
+                                            id win = [[NSApp orderedWindows][0] windowController];
+                                            switch ([theEvent keyCode]) {
+                                              case 25: // '9'
+                                                goToLastTab(win);
                                                 break;
 
                                               default:
