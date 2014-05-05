@@ -9,18 +9,14 @@
 #import "SafariWindowsMerger.h"
 #import <objc/message.h>
 
-BOOL isWindowNotAvailable(id win) {
-  if ([[win window] isMiniaturized]) {
-    return YES;
-  } else {
-    return NO;
-  }
+#define CHECK_WIN(win) \
+if ([[win window] isMiniaturized]) { \
+  return; \
 }
 
 void moveSrcToDest(id srcWin, id destWin) {
-  if (isWindowNotAvailable(srcWin) || isWindowNotAvailable(destWin)) {
-    return;
-  }
+  CHECK_WIN(srcWin)
+  CHECK_WIN(destWin)
   id tabViewItem = objc_msgSend(srcWin, @selector(selectedTab));
   NSInteger toIndex = [[[objc_msgSend(destWin, @selector(selectedTab)) tabView] tabViewItems] count];
   for (NSTabView *item in [[tabViewItem tabView] tabViewItems]) {
@@ -31,9 +27,7 @@ void moveSrcToDest(id srcWin, id destWin) {
 }
 
 void moveSrcToNewWindowAfterSelected(id srcWin) {
-  if (isWindowNotAvailable(srcWin)) {
-    return;
-  }
+  CHECK_WIN(srcWin)
   NSUInteger selectedIndex = (NSUInteger)objc_msgSend(srcWin, @selector(selectedTabIndex));
   id tabViewItem = objc_msgSend(srcWin, @selector(selectedTab));
   objc_msgSend(srcWin, @selector(_moveTabToNewWindow:), tabViewItem);
@@ -52,9 +46,7 @@ void moveSrcToNewWindowAfterSelected(id srcWin) {
 
 // The index count is a bit tricky: the toIndex should be when the current tab has not been moved.
 void moveTabLeftward(id win) {
-  if (isWindowNotAvailable(win)) {
-    return;
-  }
+  CHECK_WIN(win)
   id tabViewItem = objc_msgSend(win, @selector(selectedTab));
   NSUInteger selectedIndex = (NSUInteger)objc_msgSend(win, @selector(selectedTabIndex));
   if (selectedIndex == 0) {
@@ -67,9 +59,7 @@ void moveTabLeftward(id win) {
 }
 
 void moveTabRightward(id win) {
-  if (isWindowNotAvailable(win)) {
-    return;
-  }
+  CHECK_WIN(win)
   id tabViewItem = objc_msgSend(win, @selector(selectedTab));
   NSUInteger selectedIndex = (NSUInteger)objc_msgSend(win, @selector(selectedTabIndex));
   id tabViewItems = [[tabViewItem tabView] tabViewItems];
@@ -82,9 +72,7 @@ void moveTabRightward(id win) {
 }
 
 void goToLastTab(id win) {
-  if (isWindowNotAvailable(win)) {
-    return;
-  }
+  CHECK_WIN(win)
   NSUInteger lastIndex = [[[objc_msgSend(win, @selector(selectedTab)) tabView] tabViewItems] count] - 1;
   objc_msgSend(win, @selector(_selectTabAtIndex:), lastIndex);
 }
