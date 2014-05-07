@@ -30,11 +30,11 @@ void moveSrcToNewWindowAfterSelected(id srcWin) {
   CHECK_WIN(srcWin)
   NSUInteger selectedIndex = (NSUInteger)objc_msgSend(srcWin, @selector(selectedTabIndex));
   id tabViewItem = objc_msgSend(srcWin, @selector(selectedTab));
-  objc_msgSend(srcWin, @selector(_moveTabToNewWindow:), tabViewItem);
   id tabViewItems = [[tabViewItem tabView] tabViewItems];
   id toMoveItems = [tabViewItems subarrayWithRange:NSMakeRange(selectedIndex, [tabViewItems count] - selectedIndex)];
+  objc_msgSend(srcWin, @selector(_moveTabToNewWindow:), tabViewItem);
   if ([toMoveItems count] > 0) {
-    NSUInteger destIndex = 1;
+    NSUInteger destIndex = 0;
     id destWin = [[NSApp orderedWindows][0] windowController];
     for (id item in toMoveItems) {
       objc_msgSend(destWin, @selector(moveTabFromOtherWindow:toIndex:andSelect:),
