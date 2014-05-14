@@ -77,6 +77,12 @@ void goToLastTab(id win) {
   objc_msgSend(win, @selector(_selectTabAtIndex:), lastIndex);
 }
 
+void newTabAfterSelected(id win) {
+  CHECK_WIN(win)
+  NSUInteger selectedIndex = (NSUInteger)objc_msgSend(win, @selector(selectedTabIndex));
+  objc_msgSend(win, @selector(createTabAtIndex:andSelect:), selectedIndex + 1, YES);
+}
+
 @implementation SafariWindowsMerger
 
 + (void)load {
@@ -84,7 +90,9 @@ void goToLastTab(id win) {
   [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyUpMask
                                         handler:^NSEvent *(NSEvent *theEvent) {
                                           if (([theEvent modifierFlags] & NSControlKeyMask) &&
-                                              ([theEvent modifierFlags] & NSShiftKeyMask)) {
+                                              ([theEvent modifierFlags] & NSShiftKeyMask) &&
+                                              !([theEvent modifierFlags] & NSAlternateKeyMask) &&
+                                              !([theEvent modifierFlags] & NSCommandKeyMask)) {
                                             switch ([theEvent keyCode]) {
                                               case 46: // 'M'
                                               {
@@ -104,7 +112,8 @@ void goToLastTab(id win) {
                                               default:
                                                 break;
                                             }
-                                          } else if (([theEvent modifierFlags] & NSShiftKeyMask) &&
+                                          } else if (!([theEvent modifierFlags] & NSControlKeyMask) &&
+                                                     ([theEvent modifierFlags] & NSShiftKeyMask) &&
                                                      ([theEvent modifierFlags] & NSAlternateKeyMask) &&
                                                      ([theEvent modifierFlags] & NSCommandKeyMask)) {
                                             id win = [[NSApp orderedWindows][0] windowController];
@@ -120,11 +129,27 @@ void goToLastTab(id win) {
                                               default:
                                                 break;
                                             }
-                                          } else if (([theEvent modifierFlags] & NSCommandKeyMask)) {
+                                          } else if (!([theEvent modifierFlags] & NSControlKeyMask) &&
+                                                     !([theEvent modifierFlags] & NSShiftKeyMask) &&
+                                                     !([theEvent modifierFlags] & NSAlternateKeyMask) &&
+                                                     ([theEvent modifierFlags] & NSCommandKeyMask)) {
                                             id win = [[NSApp orderedWindows][0] windowController];
                                             switch ([theEvent keyCode]) {
                                               case 25: // '9'
                                                 goToLastTab(win);
+                                                break;
+
+                                              default:
+                                                break;
+                                            }
+                                          } else if (!([theEvent modifierFlags] & NSControlKeyMask) &&
+                                                     !([theEvent modifierFlags] & NSShiftKeyMask) &&
+                                                     ([theEvent modifierFlags] & NSAlternateKeyMask) &&
+                                                     ([theEvent modifierFlags] & NSCommandKeyMask)) {
+                                            id win = [[NSApp orderedWindows][0] windowController];
+                                            switch ([theEvent keyCode]) {
+                                              case 17: // 't'
+                                                newTabAfterSelected(win);
                                                 break;
 
                                               default:
