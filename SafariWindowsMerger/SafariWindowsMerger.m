@@ -74,7 +74,7 @@ void moveTabRightward(id win) {
 void goToLastTab(id win) {
   CHECK_WIN(win)
   NSUInteger lastIndex = [[[objc_msgSend(win, @selector(selectedTab)) tabView] tabViewItems] count] - 1;
-  objc_msgSend(win, @selector(_selectTabAtIndex:), lastIndex);
+  objc_msgSend(win, @selector(selectTabAtIndex:), lastIndex);
 }
 
 void newTabAfterSelected(id win) {
